@@ -1,9 +1,0 @@
-{
-  "cmake.buildDirectory": "${workspaceFolder}/build",
-  "cmake.configureOnOpen": true,
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "ms-vscode.cpptools",
-  "C_Cpp.default.cppStandard": "c++17",
-  "files.trimTrailingWhitespace": true,
-  "files.insertFinalNewline": true
-}
