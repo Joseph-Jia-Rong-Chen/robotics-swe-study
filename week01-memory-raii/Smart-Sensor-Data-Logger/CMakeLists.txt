@@ -16,6 +16,7 @@ FetchContent_Declare(
     DOWNLOAD_EXTRACT_TIMESTAMP true
 )
 FetchContent_MakeAvailable(googletest)
+enable_testing()
 
 # library target
 add_library(sensor_logger_lib
@@ -29,3 +30,13 @@ target_include_directories(sensor_logger_lib PUBLIC include)
 # main executable
 add_executable(sensor_logger src/main.cpp)
 target_link_libraries(sensor_logger PRIVATE sensor_logger_lib)
+
+# test target
+add_executable(sensor_test tests/test_sensor_buffer.cpp)
+target_link_libraries(sensor_test PRIVATE
+    sensor_logger_lib
+    GTest::gtest_main
+    )
+
+include(googletest)
+gtest_discover_tests(sensor_test)
