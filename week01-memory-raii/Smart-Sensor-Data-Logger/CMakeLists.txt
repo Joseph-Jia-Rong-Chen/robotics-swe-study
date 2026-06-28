@@ -38,5 +38,5 @@ target_link_libraries(sensor_test PRIVATE
     GTest::gtest_main
     )
 
-include(Googletest)
+#include(Googletest)
 gtest_discover_tests(sensor_test)
