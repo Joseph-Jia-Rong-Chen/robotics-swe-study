@@ -27,6 +27,13 @@ add_library(sensor_logger_lib
 )
 target_include_directories(sensor_logger_lib PUBLIC include)
 
+target_compile_options(sensor_logger_lib PRIVATE
+  $<$<CONFIG:Debug>:-fsanitize=address,undefined -fno-omit-frame-pointer>
+)
+target_link_options(sensor_logger_lib PRIVATE
+  $<$<CONFIG:Debug>:-fsanitize=address,undefined>
+)
+
 # main executable
 add_executable(sensor_logger src/main.cpp)
 target_link_libraries(sensor_logger PRIVATE sensor_logger_lib)
@@ -40,3 +47,4 @@ target_link_libraries(sensor_test PRIVATE
 
 include(GoogleTest)
 gtest_discover_tests(sensor_test)
+
