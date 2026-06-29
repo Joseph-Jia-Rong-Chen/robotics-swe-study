@@ -37,6 +37,13 @@ target_link_options(sensor_logger_lib PRIVATE
 # main executable
 add_executable(sensor_logger src/main.cpp)
 target_link_libraries(sensor_logger PRIVATE sensor_logger_lib)
+target_link_options(sensor_logger PRIVATE
+  $<$<CONFIG:Debug>:-fsanitize=address,undefined>
+)
+target_link_options(sensor_logger PRIVATE
+  $<$<CONFIG:Debug>:-fsanitize=address,undefined>
+)
+
 
 # test target
 add_executable(sensor_test tests/test_sensor_buffer.cpp)
@@ -44,6 +51,12 @@ target_link_libraries(sensor_test PRIVATE
     sensor_logger_lib
     GTest::gtest_main
     )
+target_link_options(sensor_test PRIVATE
+  $<$<CONFIG:Debug>:-fsanitize=address,undefined>
+)
+target_link_options(sensor_test PRIVATE
+  $<$<CONFIG:Debug>:-fsanitize=address,undefined>
+)
 
 include(GoogleTest)
 gtest_discover_tests(sensor_test)
