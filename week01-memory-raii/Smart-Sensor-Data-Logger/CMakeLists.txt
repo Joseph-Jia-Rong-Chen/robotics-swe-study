@@ -24,6 +24,7 @@ add_library(sensor_logger_lib
     src/lidar_sensor.cpp
     src/sensorBuffer.cpp
     src/file_writer.cpp
+    src/DataProcessor.cpp
 )
 target_include_directories(sensor_logger_lib PUBLIC include)
 
