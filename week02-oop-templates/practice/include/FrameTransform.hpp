@@ -5,14 +5,14 @@
 
 std::vector<Point3D> transformToRobotFrame(
     const std::vector<Point3D>& input,
-    const SensorTransform& transform)
+    const SensorTransform& tf)
     {
         std::vector<Point3D> result;
 
         std::transform(input.begin(), input.end(),
             std::back_inserter(result),
-            [&transform](const Point3D& p){
-                return transform.apply(p);
+            [&tf](const Point3D& p){
+                return tf.apply(p);
             });
 
         return result;
